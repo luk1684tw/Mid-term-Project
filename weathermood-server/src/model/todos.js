@@ -56,7 +56,7 @@ function createTodos(mood, text) {
 function accomplishTodo(id) {
 	return new Promise((resolve,reject) => {
 		// let accomplishTodoPost=null;
-		liodos().then(todos => {
+		listTodos().then(todos => {
 			todos.map(p => {
 				console.log(`P.ID : ${p.id}`);
 				if (p.id === id){
