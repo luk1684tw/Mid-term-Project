@@ -23,6 +23,7 @@ import Forecast from 'components/Forecast.jsx';
 import {setSearchText} from 'states/post-actions.js';
 import {toggleNavbar} from 'states/main-actions.js';
 
+
 import './Main.css';
 
 class Main extends React.Component {
