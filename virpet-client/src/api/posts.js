@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Develop server URL
-const postBaseUrl = 'http://weathermood-23.us-west-2.elasticbeanstalk.com/api';
+const postBaseUrl = 'http://virpet.us-west-2.elasticbeanstalk.com/api';
 
 // Staging server URL
 // const postBaseUrl = 'http://weathermood-staging.us-west-2.elasticbeanstalk.com/api';
