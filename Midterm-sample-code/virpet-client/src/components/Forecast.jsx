@@ -112,6 +112,39 @@ class Forecast extends React.Component {
 									</CardText>
 							</Card>
 						</Col>
+						<Col className="responsive">
+							<Card>
+								<CardTitle>5</CardTitle>
+								<CardSubtitle>5</CardSubtitle>
+
+									<CardText>
+										<i></i>
+										<span>5</span>
+									</CardText>
+							</Card>
+						</Col>
+						<Col className="responsive">
+							<Card>
+								<CardTitle>6</CardTitle>
+								<CardSubtitle>6</CardSubtitle>
+
+									<CardText>
+										<i></i>
+										<span>6</span>
+									</CardText>
+							</Card>
+						</Col>
+						<Col className="responsive">
+							<Card>
+								<CardTitle>7</CardTitle>
+								<CardSubtitle>7</CardSubtitle>
+
+									<CardText>
+										<i></i>
+										<span>7</span>
+									</CardText>
+							</Card>
+						</Col>
 					</Row>
 				</div>
 			</container>
