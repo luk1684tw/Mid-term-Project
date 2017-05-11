@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Alert, Label, Input} from 'reactstrap';
 
+import _ from "lodash";
+
+import {
+	Card, Button, CardImg, CardTitle, CardText, CardGroup,
+	 CardSubtitle, CardBlock,Container, Row, Col, Jumbotron
+} from 'reactstrap';
+
 import WeatherDisplay from 'components/WeatherDisplay.jsx';
 import WeatherTable from 'components/WeatherTable.jsx';
 import WeatherForm from 'components/WeatherForm.jsx';
@@ -60,13 +67,54 @@ class Forecast extends React.Component {
 
         return (
             <div className='forecast'>
-                <div className='tomorrow'>
-                    <WeatherForm city={city} defaultUnit={unit} submitAction={getForecast}/>
-                    <WeatherDisplay {...tomorrow} day='tomorrow' unit={unit} masking={masking}/>
-                </div>
-                <div className='rests'>
-                    <WeatherTable list={rests} unit={unit} masking={masking}/>
-                </div>
+			<container className='display-5'>
+				<div className="cards">
+					<Row>
+						<Col>
+							<Card>
+								<CardTitle>1</CardTitle>
+								<CardSubtitle>1</CardSubtitle>
+									<CardText>
+										<i></i>
+										<span>1</span>
+									</CardText>
+							</Card>
+						</Col>
+						<Col>
+							<Card>
+								<CardTitle>2</CardTitle>
+								<CardSubtitle>2</CardSubtitle>
+
+									<CardText>
+										<i></i>
+										<span>2</span>
+									</CardText>
+							</Card>
+						</Col>
+						<Col className="responsive">
+							<Card>
+								<CardTitle>3</CardTitle>
+								<CardSubtitle>3</CardSubtitle>
+									<CardText>
+										<i></i>
+										<span>3</span>
+									</CardText>
+							</Card>
+						</Col>
+						<Col className="responsive">
+							<Card>
+								<CardTitle>4</CardTitle>
+								<CardSubtitle>4</CardSubtitle>
+
+									<CardText>
+										<i></i>
+										<span>4</span>
+									</CardText>
+							</Card>
+						</Col>
+					</Row>
+				</div>
+			</container>
                 <div className='todos'>
                     <div className='label d-flex justify-content-between align-items-end'>
                         <h4><i className='fa fa-tags' aria-hidden="true"></i>&nbsp;&nbsp;Todos</h4>
