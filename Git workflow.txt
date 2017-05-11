@@ -1,0 +1,37 @@
+git workflow:
+- 開始工作時，更新最新進度
+- (master) $ git pull
+- 如果是創新的branch，多打一行 $ git branch foo
+- (master) $ git checkout foo
+- (foo) $ git merge master
+- (可能會有conflict)
+- (foo) $ git status
+- # 解conflict，並確定可以正確運作
+- (foo) $ git add -A
+- (foo) $ git commit -m “[merge] some message”
+- 開始做事…
+- 確定是在 foo branch 下。(配合 git branch)
+- 才開始修改檔案
+- (foo) $ git add -A
+- (foo) $ git commit -m “[update] component: some message”
+- 因為可能有人在你在改的同時，push了一些東西。(基本跟上面1, 2步一樣)
+- (foo) $ git checkout master
+- (master) $ git pull
+- (master) $ git checkout foo
+- (foo) $ git merge master
+- # 解conflict，並確定可以正確運作
+- (foo) $ git add -A
+- (foo) $ git commit -m “[merge] some message”
+- 在自己的branch，push回origin。
+- (foo) $ git push origin foo
+- 到 github repository，發 Pull Request
+- “Compare and pull request”
+- (如果把沒有的話，branch 切到 foo，按下旁邊的”New pull request”
+- “Create Pull Request”
+- “Merge Pull Request”
+- “Confirm Pull Request”
+- 回到 master branch，pull 下最新進度
+- (foo) $ git checkout master
+- (master) $ git pull
+- (master) $ git checkout foo
+- (foo) $ git merge master
