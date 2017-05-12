@@ -53,8 +53,7 @@ class Today extends React.Component {
     render() {
         const {city, group, description, temp, unit, masking, posts, postLoading} = this.props;
 
-        document.body.className = `weather-bg ${group}`;
-        document.querySelector('.weather-bg .mask').className = `mask ${masking ? 'masking' : ''}`;
+
 
         return (
             <div className='today'>

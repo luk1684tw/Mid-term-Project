@@ -62,8 +62,9 @@ class Forecast extends React.Component {
         const tomorrow = list[0];
         const rests = list.slice(1);
 
-        document.body.className = `weather-bg ${tomorrow.group}`;
-        document.querySelector('.weather-bg .mask').className = `mask ${masking ? 'masking' : ''}`;
+        document.body.className = `weather-bg`;
+        document.querySelector('.weather-bg').style.backgroundImage = `url("images/corgi.jpg")  `;
+
 
         return (
             <div className='forecast'>
