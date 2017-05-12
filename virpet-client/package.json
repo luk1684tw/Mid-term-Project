@@ -23,6 +23,7 @@
     "react-addons-transition-group": "^15.4.2",
     "react-big-calendar": "^0.14.0",
     "react-dom": "^15.5.3",
+    "react-facebook-login": "^3.6.0",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.0.0",
     "reactstrap": "^4.5.0",

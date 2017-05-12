@@ -27,7 +27,7 @@ import Today from 'components/Today.jsx';
 import Forecast from 'components/Forecast.jsx';
 import {setSearchText} from 'states/post-actions.js';
 import {toggleNavbar} from 'states/main-actions.js';
-
+import GoogleLogin from 'react-google-login';
 import './Main.css';
 
 class Main extends React.Component {
@@ -57,6 +57,9 @@ class Main extends React.Component {
     }
 
     render() {
+		const responseGoogle = (response) => {
+	  		console.log(response);
+		}
         return (
             <Router>
                 <div className='main'>
@@ -64,7 +67,7 @@ class Main extends React.Component {
                         <div className='container'>
                             <Navbar color='faded' light toggleable>
                                 <NavbarToggler right onClick={this.handleNavbarToggle}/>
-                                <NavbarBrand className='' href="/">Virpet</NavbarBrand>
+                                <NavbarBrand className='' href="/">Virpet</NavbarBrand>&nbsp;&nbsp;
                                 <Collapse isOpen={this.props.navbarToggle} navbar>
                                     <Nav navbar>
                                         <NavItem>
@@ -98,7 +101,17 @@ class Main extends React.Component {
                                                 <Button color="secondary" onClick={this.toggle}>取消</Button>
                                             </ModalFooter>
                                         </Modal>
-                                    </div>
+                                    </div>&nbsp;&nbsp;
+									<div>
+										<GoogleLogin
+											clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+											buttonText="Login with Google"
+											onSuccess={responseGoogle}
+											onFailure={responseGoogle}
+											className='btn btn-secondary'
+											offline={false}
+										></GoogleLogin>
+									</div>
                                     <div className='search ml-auto'>
                                         <Input className='ml-auto' type='text' placeholder='Search' onKeyPress={this.handleSearchKeyPress} getRef={e => this.searchEl = e}></Input>{this.props.searchText && <i className='navbar-text fa fa-times' onClick={this.handleClearSearch}></i>
 }
