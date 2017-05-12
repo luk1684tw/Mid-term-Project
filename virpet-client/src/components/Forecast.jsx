@@ -18,7 +18,7 @@ import TodoList from 'components/TodoList.jsx';
 import {cancelForecast} from 'api/open-weather-map.js';
 import {getForecast} from 'states/weather-actions.js';
 import {listTodos, toggleAndList} from 'states/todo-actions.js';
-
+import Days from 'components/Days.jsx'
 import './Forecast.css';
 
 class Forecast extends React.Component {
@@ -71,79 +71,25 @@ class Forecast extends React.Component {
 				<div className="cards">
 					<Row>
 						<Col>
-							<Card>
-								<CardTitle>1</CardTitle>
-								<CardSubtitle>1</CardSubtitle>
-									<CardText>
-										<i></i>
-										<span>1</span>
-									</CardText>
-							</Card>
+							<Days/>
 						</Col>
 						<Col>
-							<Card>
-								<CardTitle>2</CardTitle>
-								<CardSubtitle>2</CardSubtitle>
-
-									<CardText>
-										<i></i>
-										<span>2</span>
-									</CardText>
-							</Card>
+							<Days/>
 						</Col>
 						<Col className="responsive">
-							<Card>
-								<CardTitle>3</CardTitle>
-								<CardSubtitle>3</CardSubtitle>
-									<CardText>
-										<i></i>
-										<span>3</span>
-									</CardText>
-							</Card>
+							<Days/>
 						</Col>
 						<Col className="responsive">
-							<Card>
-								<CardTitle>4</CardTitle>
-								<CardSubtitle>4</CardSubtitle>
-
-									<CardText>
-										<i></i>
-										<span>4</span>
-									</CardText>
-							</Card>
+							<Days/>
 						</Col>
 						<Col className="responsive">
-							<Card>
-								<CardTitle>5</CardTitle>
-								<CardSubtitle>5</CardSubtitle>
-
-									<CardText>
-										<i></i>
-										<span>5</span>
-									</CardText>
-							</Card>
+							<Days/>
 						</Col>
 						<Col className="responsive">
-							<Card>
-								<CardTitle>6</CardTitle>
-								<CardSubtitle>6</CardSubtitle>
-
-									<CardText>
-										<i></i>
-										<span>6</span>
-									</CardText>
-							</Card>
+							<Days/>
 						</Col>
 						<Col className="responsive">
-							<Card>
-								<CardTitle>7</CardTitle>
-								<CardSubtitle>7</CardSubtitle>
-
-									<CardText>
-										<i></i>
-										<span>7</span>
-									</CardText>
-							</Card>
+							<Days/>
 						</Col>
 					</Row>
 				</div>
