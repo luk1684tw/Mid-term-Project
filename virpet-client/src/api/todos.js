@@ -1,6 +1,9 @@
 import axios from 'axios';
 // const todoBaseUrl = 'http://weathermood-23.us-west-2.elasticbeanstalk.com/api';
-const todoBaseUrl = 'http://localhost:8080/forecast'
+
+
+const todoBaseUrl = 'http://localhost:8080/api'
+
 
 
 export function listTodos(accomplishTodo = false,searchText = '') {
