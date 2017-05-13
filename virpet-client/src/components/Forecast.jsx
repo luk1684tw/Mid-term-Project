@@ -83,7 +83,7 @@ class Forecast extends React.Component {
 						<Col className="responsive">
 							<Days order = {3}/>
 						</Col>
-					
+
 						<Col className="responsive">
 							<Days order = {4}/>
 						</Col>
