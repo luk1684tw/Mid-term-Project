@@ -15,26 +15,26 @@ import {
     InputGroupAddon
 } from 'reactstrap';
 import {connect} from 'react-redux';
-import {eventTitle, eventDanger, eventDescript, eventGetStartDate, eventGetEndDate} from 'states/main-actions.js';
+import {createEvent, eventTitle, eventDanger, eventDescript, eventGetStartDate, eventGetEndDate, changeModal} from 'states/events-actions.js';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Main.css';
 class SingleEvent extends React.Component{
     static propTypes = {
+      modal: PropTypes.bool,
       eventTitleValue: PropTypes.string,
       eventStartDate: PropTypes.string,
       eventEndDate: PropTypes.string,
       eventDescriptValue: PropTypes.string,
       eventDanger: PropTypes.bool,
+      events: PropTypes.array,
+      startEventLoading:PropTypes.bool,
       store: PropTypes.object,
       dispatch: PropTypes.func
     };
     constructor(props) {
         super(props);
-        this.state = {
-            modal: false
-        };
         this.eventTitleEl = null;
         this.eventStartDateEl = null;
         this.eventEndDateEl = null;
@@ -43,14 +43,15 @@ class SingleEvent extends React.Component{
         this.handleEventDescriptChange = this.handleEventDescriptChange.bind(this);
         this.handleEventStartDateChange = this.handleEventStartDateChange.bind(this);
         this.handleEventEndDateChange = this.handleEventEndDateChange.bind(this);
-        this.toggle = this.toggle.bind(this);
+        this.handleToggle = this.handleToggle.bind(this);
+        this.handleEvents = this.handleEvents.bind(this);
     }
     render(){
       return(
         <div>
-            <Button color="danger" onClick={this.toggle}>新增提醒</Button>
-            <Modal isOpen={this.state.modal} toggle={this.toggle} className='' backdrop={false}>
-                <ModalHeader toggle={this.toggle}>事件</ModalHeader>
+            <Button color="danger" onClick={this.handleToggle}>新增提醒</Button>
+            <Modal isOpen={this.props.modal} toggle={this.handleToggle} className='' backdrop={false}>
+                <ModalHeader toggle={this.handleToggle}>事件</ModalHeader>
                 <ModalBody>
                     <InputGroup>
                         <InputGroupAddon>名稱</InputGroupAddon>
@@ -72,17 +73,43 @@ class SingleEvent extends React.Component{
                     </FormGroup>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={this.toggle}>新增</Button>{' '}
-                    <Button color="secondary" onClick={this.toggle}>取消</Button>
+                    <Button color="primary" onClick={this.handleEvents}>新增</Button>{' '}
+                    <Button color="secondary" onClick={this.handleToggle}>取消</Button>
                 </ModalFooter>
             </Modal>
         </div>
       );
     }
-    toggle() {
-        this.setState({
-            modal: !this.state.modal
-        });
+    handleToggle() {
+        this.props.dispatch(changeModal());
+    }
+    handleEvents(){
+        if (this.props.eventTitle === '') {
+            console.log('123');
+            this.props.dispatch(eventDanger(true));
+            return;
+        }
+        if (this.props.eventDescript==='') {
+            console.log('456');
+            this.props.dispatch(eventDanger(true));
+            return;
+        }
+        if (!this.props.eventStartDate) {
+           console.log('1234245346');
+            this.props.dispatch(eventDanger(true));
+            return;
+        }
+        if (!this.props.eventEndDate) {
+           console.log('1234546');
+            this.props.dispatch(eventDanger(true));
+            return;
+        }
+        this.props.dispatch(changeModal());
+        this.props.dispatch(createEvent(this.props.eventTitle, this.props.eventStartDate, this.props.eventEndDate, this.props.eventDescript));
+        this.props.dispatch(eventTitle(''));
+        this.props.dispatch(eventStartDate(''));
+        this.props.dispatch(eventEndDate(''));
+        this.props.dispatch(eventDescript(''));
     }
     handleEventTitleChange(e) {
         const text = e.target.value;
@@ -119,5 +146,6 @@ class SingleEvent extends React.Component{
     }
 }
 export default connect(state => ({
-    ...state.events,
+    ...state.eventForm,
+    ...state.events
 }))(SingleEvent);
