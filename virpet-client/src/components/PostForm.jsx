@@ -41,7 +41,6 @@ class PostForm extends React.Component {
     render() {
         const {inputValue, moodToggle, mood} = this.props;
         const inputDanger = this.props.inputDanger ? 'has-danger' : '';
-
         return (
             <div className='post-form'>
                 <Alert color='info' className={`d-flex flex-column flex-sm-row justify-content-center ${inputDanger}`}>
