@@ -6,8 +6,8 @@ const moment = require('moment');
 function accomplishTodo(id) {
 	return new Promise((resolve,reject) => {
 		// let accomplishTodoPost=null;
-		listTodos().then(todos => {
-			todos.map(p => {
+		listEvents().then(events => {
+			events.map(p => {
 				console.log(`P.ID : ${p.id}`);
 				if (p.id === id){
 					// accomplishTodoPost=p;
@@ -16,10 +16,10 @@ function accomplishTodo(id) {
 				return p;
 			})
 
-			fs.writeFile('data-todos.json', JSON.stringify(todos), err => {
+			fs.writeFile('data-evens.json', JSON.stringify(events), err => {
                 if (err) reject(err);
 
-                resolve(todos);
+                resolve(events);
             });
 		});
 	});
@@ -44,6 +44,12 @@ function listEvents(unaccomplishedOnly = false,days = 0, searchText = '') {
 
 				})
 			}
+			if (searchText) {
+				events.filter((e) => {
+					return e.text.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+				})
+			}
+			resolve(events);
 
 		})
 	}
