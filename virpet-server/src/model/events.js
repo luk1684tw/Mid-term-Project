@@ -3,7 +3,7 @@ const uuid = require('uuid/v4');
 const moment = require('moment');
 
 
-function accomplishTodo(id) {
+function accomplishEvent(id) {
 	return new Promise((resolve,reject) => {
 		// let accomplishTodoPost=null;
 		listEvents().then(events => {
@@ -41,7 +41,7 @@ function listEvents(unaccomplishedOnly = false,days = 0, searchText = '') {
 			}
 			if (days) {
 				events.filter(e => {
-
+					
 				})
 			}
 			if (searchText) {

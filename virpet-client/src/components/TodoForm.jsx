@@ -53,13 +53,13 @@ class TodoForm extends React.Component {
                                 }
                             </DropdownToggle>
                             <DropdownMenu>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Clear')}><i className={getMoodIcon('Clear')}></i>&nbsp;&nbsp;Clear</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Clouds')}><i className={getMoodIcon('Clouds')}></i>&nbsp;&nbsp;Clouds</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Drizzle')}><i className={getMoodIcon('Drizzle')}></i>&nbsp;&nbsp;Drizzle</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Rain')}><i className={getMoodIcon('Rain')}></i>&nbsp;&nbsp;Rain</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Thunder')}><i className={getMoodIcon('Thunder')}></i>&nbsp;&nbsp;Thunder</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Snow')}><i className={getMoodIcon('Snow')}></i>&nbsp;&nbsp;Snow</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Windy')}><i className={getMoodIcon('Windy')}></i>&nbsp;&nbsp;Windy</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Clear')}>&nbsp;&nbsp;5 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Clouds')}>&nbsp;&nbsp;7 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Drizzle')}>&nbsp;&nbsp;10 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Rain')}>&nbsp;&nbsp;15 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Thunder')}>&nbsp;&nbsp;20 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Snow')}>&nbsp;&nbsp;25 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Windy')}>&nbsp;&nbsp;30 Days</DropdownItem>
                             </DropdownMenu>
                         </ButtonDropdown>
                     </div>

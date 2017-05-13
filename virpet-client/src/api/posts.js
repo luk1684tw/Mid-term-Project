@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Develop server URL
 
-const postBaseUrl = 'http://localhost:8080/api';
+const postBaseUrl = 'http://localhost:8080';
 
 
 // Staging server URL
