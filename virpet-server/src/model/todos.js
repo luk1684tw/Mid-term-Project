@@ -19,7 +19,6 @@ function listTodos(unaccomplishedOnly = false,searchText = '') {
 		    }
 			console.log(typeof searchText);
 		    if (todos.length > 0 && searchText) {
-				console.log('WWW');
 		        todos = todos.filter(t => {
 		            return t.text.toLowerCase().indexOf(searchText.toLowerCase()) !== -1;
 		        });

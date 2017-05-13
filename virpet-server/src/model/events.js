@@ -41,7 +41,7 @@ function listEvents(unaccomplishedOnly = false,days = 0, searchText = '') {
 			}
 			if (days) {
 				events.filter(e => {
-					
+					return ((e.startDate - moment().unix()) <= days);
 				})
 			}
 			if (searchText) {

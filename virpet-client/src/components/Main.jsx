@@ -29,11 +29,6 @@ class Main extends React.Component {
     static propTypes = {
         searchText: PropTypes.string,
         navbarToggle: PropTypes.bool,
-        eventTitleValue: PropTypes.string,
-        eventStartDate: PropTypes.string,
-        eventEndDate: PropTypes.string,
-        eventDescriptValue: PropTypes.string,
-        eventDanger: PropTypes.bool,
         store: PropTypes.object,
         dispatch: PropTypes.func
     };
