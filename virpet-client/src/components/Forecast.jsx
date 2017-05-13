@@ -72,25 +72,26 @@ class Forecast extends React.Component {
 				<div className="cards">
 					<Row>
 						<Col>
-							<Days/>
+							<Days order = {0}/>
 						</Col>
 						<Col>
-							<Days/>
+							<Days order = {1}/>
 						</Col>
 						<Col className="responsive">
-							<Days/>
+							<Days order = {2}/>
 						</Col>
 						<Col className="responsive">
-							<Days/>
+							<Days order = {3}/>
+						</Col>
+					
+						<Col className="responsive">
+							<Days order = {4}/>
 						</Col>
 						<Col className="responsive">
-							<Days/>
+							<Days order = {5}/>
 						</Col>
 						<Col className="responsive">
-							<Days/>
-						</Col>
-						<Col className="responsive">
-							<Days/>
+							<Days order = {6}/>
 						</Col>
 					</Row>
 				</div>
