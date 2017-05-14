@@ -4,7 +4,7 @@ const initTodoFormState = {
     inputValue: '',
     inputDanger: false,
     moodToggle: false,
-    mood: 'na'
+    showDays: 7
 };
 export function todoForm(state = initTodoFormState, action) {
     switch (action.type) {
@@ -28,10 +28,10 @@ export function todoForm(state = initTodoFormState, action) {
                 ...state,
                 moodToggle: action.toggle
             };
-        case '@TODO_FORM/SELECT_MOOD':
+        case '@TODO_FORM/SELECT_SHOW_DAYS':
             return {
                 ...state,
-                mood: action.mood
+                showDays: action.showDays
             };
         default:
             return state;
