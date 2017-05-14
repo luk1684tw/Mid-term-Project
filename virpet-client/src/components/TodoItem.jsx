@@ -11,8 +11,10 @@ import './TodoItem.css';
 class TodoItem extends React.Component {
     static propTypes = {
         id: PropTypes.string,
-        mood: PropTypes.string,
-        text: PropTypes.string,
+        title: PropTypes.string,
+        startDate: PropTypes.string,
+        endDate: PropTypes.string,
+        description:PropTypes.string,
         ts: PropTypes.number,
         doneTs: PropTypes.number,
         dispatch: PropTypes.func
@@ -25,15 +27,17 @@ class TodoItem extends React.Component {
     }
 
     render() {
-        const {id, mood, text, ts, doneTs} = this.props;
+        const {id, title, startDate, endDate, description, ts, doneTs} = this.props;
 
         return (
             <div className={'todo-item d-flex flex-column ' + (doneTs ? 'done' : 'undone')}  onClick={this.handleCheckboxCheck}>
                 <div className='todo d-flex'>
-                    <div className='mood'><i className={getMoodIcon(mood)}></i></div>
+                    {/* <div className='mood'><i className={getMoodIcon(mood)}></i></div> */}
                     <div className='wrap'>
                         <div className='ts'>{'Created: ' + moment(ts * 1000).calendar()}</div>
-                        <div className='text'>{text}</div>
+                        <div className='text'>{title}</div>
+                        <div className='text'>{startDate} to {endDate}</div>
+                        <div className='text'>{description}</div>
                     </div>
                 </div>
                 <div className='check d-flex justify-content-end align-items-center'>

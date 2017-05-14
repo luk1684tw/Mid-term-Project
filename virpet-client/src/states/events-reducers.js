@@ -67,3 +67,30 @@ export function eventForm(state = initEventFormState, action) {
             return state;
     }
 }
+const initEventsFormState = {
+    formToggle: false,
+    tempToggle: false,
+    showDays: 7
+};
+
+export function eventsForm(state = initEventsFormState, action) {
+    switch (action.type) {
+        case '@EVENTSFORM/TOGGLE_FORM':
+            return {
+                ...state,
+                formToggle: !state.formToggle
+            };
+        case '@EVENTSFORM/TOGGLE_TEMP':
+            return {
+                ...state,
+                tempToggle: !state.tempToggle
+            };
+        case '@EVENTSFORM/SELECT_SHOW_DAYS':
+            return {
+                ...state,
+                showDays: action.showDays
+            };
+        default:
+            return state;
+    }
+}

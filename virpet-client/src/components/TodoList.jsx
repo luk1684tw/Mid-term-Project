@@ -11,7 +11,7 @@ import './TodoList.css';
 
 class TodoList extends React.Component {
     static propTypes = {
-        todos: PropTypes.array
+        events: PropTypes.array
     };
 
     constructor(props) {
@@ -19,15 +19,15 @@ class TodoList extends React.Component {
     }
 
     render() {
-        const {todos} = this.props;
-
+        const {events} = this.props;
+        console.log(events);
         let children = (
             <ListGroupItem className='empty d-flex justify-content-center align-items-center'>
-                <div className='empty-text'>All todos are accomplished.<br />Anything else?</div>
+                <div className='empty-text'>All events are accomplished.<br />Anything else?</div>
             </ListGroupItem>
         );
-        if (todos.length) {
-            children = todos.map(t => (
+        if (events.length) {
+            children = events.map(t => (
                 <ListGroupItem key={t.id} action={!t.doneTs}>
                     <TodoItem {...t} />
                 </ListGroupItem>

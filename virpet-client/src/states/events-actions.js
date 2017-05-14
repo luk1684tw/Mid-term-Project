@@ -57,12 +57,12 @@ function endlistEvents(events){
         events
     }
 }
-export function listEvents(searchText, loading = false) {
+export function listEvents(searchText, loading = false, showDays) {
     return (dispatch, getState) => {
         if (!loading)
             dispatch(startEventLoading());
 
-        return listEventsFromApi(searchText).then(events => {
+        return listEventsFromApi(getState().todo.unaccomplishedOnly, searchText, showDays).then(events => {
             dispatch(endlistEvents(events));
             dispatch(endEventLoading());
         }).catch(err => {
@@ -72,14 +72,34 @@ export function listEvents(searchText, loading = false) {
     };
 };
 export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescript) {
+    console.log('Action.eventTitle' + eventTitle);
+    console.log('Action.eventDescript' + eventDescript);
     return (dispatch, getState) => {
         dispatch(startEventLoading());
 
         return createEventFromApi(eventTitle, eventStartDate, eventEndDate, eventDescript).then(events => {
-            dispatch(listEvents(getState().searchText, true));
+            dispatch(listEvents(getState().searchText, true, 7));
         }).catch(err => {
             console.error('Error creating post', err);
             dispatch(endEventLoading());
         });
+    };
+};
+//------------------------
+//------------------------
+export function toggleForm() {
+    return {
+        type: '@EVENTSFORM/TOGGLE_FORM'
+    };
+}
+export function toggleTemp() {
+    return {
+        type: '@EVENTSFORM/TOGGLE_TEMP'
+    };
+}
+export function selectShowDays(showDays) {
+    return {
+        type: '@EVENTSFORM/SELECT_SHOW_DAYS',
+        showDays
     };
 };

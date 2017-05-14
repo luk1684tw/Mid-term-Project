@@ -3,6 +3,9 @@ import {
 	Card, Button, CardImg, CardTitle, CardText, CardGroup,
     CardSubtitle, CardBlock,Container, Row, Col, Jumbotron
 }  from 'reactstrap';
+
+import PropTypes from 'prop-types';
+
 export default class Days extends React.Component{
     constructor(props) {
     	super(props);
