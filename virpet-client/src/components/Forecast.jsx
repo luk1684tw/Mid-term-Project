@@ -104,7 +104,8 @@ class Forecast extends React.Component {
                         <div><Input type="checkbox" checked={this.props.unaccomplishedOnly} onClick={this.toggleUnaccomplishedOnly} />&nbsp;<Label className='accomplished-only' onClick={this.toggleUnaccomplishedOnly}>Unaccomplished</Label></div>
                     </div>
                     <TodoForm />
-                    <TodoList events={this.props.events} />{
+          <TodoList events={events} />{
+
                         todoLoading &&
                         <Alert color='warning' className='loading'>Loading...</Alert>
                     }

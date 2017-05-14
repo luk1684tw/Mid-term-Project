@@ -4,6 +4,7 @@ import axios from 'axios';
 const eventBaseUrl = 'http://localhost:8080/api';
 
 export function listEvents(unaccomplishedOnly, searchText, showDays) {
+<<<<<<< HEAD
   let url = `${eventBaseUrl}/events`;
   if (searchText)
     url += `?searchText=${searchText}`;
@@ -17,9 +18,27 @@ export function listEvents(unaccomplishedOnly, searchText, showDays) {
   return axios.get(url).then(function(res) {
       if (res.status !== 200)
           throw new Error(`Unexpected response code: ${res.status}`);
+=======
+    let url = `${eventBaseUrl}/events`;
+    if (searchText)
+        url += `?searchText=${searchText}`;
+    if (accomplishTodo)
+        url += `?accomplishTodo=${accomplishTodo}`;
+    if (accomplishTodo && searchText)
+        url = `${eventBaseUrl}/events?accomplishTodo=${accomplishTodo}&searchText=${searchText}`;
+    if (!accomplishTodo && !searchText)
+    	url += `?showDays=${showDays}`;
+    else
+        url += `&showDays=${showDays}`;
 
-      return res.data;
-  });
+    console.log(url);
+    return axios.get(url).then(function(res) {
+     if (res.status !== 200)
+        throw new Error(`Unexpected response code: ${res.status}`);
+>>>>>>> master
+
+        return res.data;
+    });
 }
 export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescript) {
     let url = `${eventBaseUrl}/events`;
@@ -28,7 +47,7 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
     console.log('API.eventTitle = ' + eventTitle);
     console.log('API.eventStartDate = ' + eventStartDate);
     console.log('API.eventEndDate = '+ eventEndDate);
-    console.log('API.eventDescript = '+eventDescript);
+    console.log('API.eventDescript = '+ eventDescript);
     return axios.post(url, {
         eventTitle,
         eventStartDate,
