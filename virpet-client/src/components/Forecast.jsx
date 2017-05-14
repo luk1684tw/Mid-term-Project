@@ -58,7 +58,7 @@ class Forecast extends React.Component {
     }
 
     render() {
-        const {unit, city, list, masking, todoLoading, todos} = this.props;
+        const {unit, city, list, masking, todoLoading, events} = this.props;
         const tomorrow = list[0];
         const rests = list.slice(1);
 
@@ -102,7 +102,7 @@ class Forecast extends React.Component {
                         <div><Input type="checkbox" checked={this.props.unaccomplishedOnly} onClick={this.toggleUnaccomplishedOnly} />&nbsp;<Label className='accomplished-only' onClick={this.toggleUnaccomplishedOnly}>Unaccomplished</Label></div>
                     </div>
                     <TodoForm />
-                    <TodoList todos={events} />{
+                    <TodoList events={events} />{
                         todoLoading &&
                         <Alert color='warning' className='loading'>Loading...</Alert>
                     }
@@ -118,7 +118,9 @@ class Forecast extends React.Component {
 
 export default connect(state => ({
     ...state.forecast,
+		...state.events,
+		...state.todoForm,
     unit: state.unit,
-    ...state.events,
     searchText: state.searchText
+
 }))(Forecast);

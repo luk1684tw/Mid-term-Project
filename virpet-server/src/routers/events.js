@@ -27,7 +27,6 @@ router.post('/events',function(req,res,next) {
 
 	eventModel.createEvent(eventTitle,eventStartDate,eventEndDate,eventDescript).then(events => {
 		res.json(events);
-		console.log(events);
 	}).catch(next);
 });
 module.exports = router;
