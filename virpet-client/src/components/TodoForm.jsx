@@ -48,10 +48,10 @@ class TodoForm extends React.Component {
                     <div className='mood align-self-start'>
                         <ButtonDropdown type='buttom' isOpen={moodToggle} toggle={this.handleMoodToggle}>
                             <DropdownToggle className='mood-toggle' type='button' caret color="secondary">
-                                {/* <i className={getMoodIcon(mood)}></i>&nbsp;{
-                                    mood === 'na' ? 'Mood' : mood
-                                } */}
-                                {this.props.showDays +' Days'}
+                                {/*<i className={getMoodIcon(mood)}></i>&nbsp;
+                                     mood === 'na' ? 'Mood' : mood
+                                */}
+								                {this.props.showDays} Days
                             </DropdownToggle>
                             <DropdownMenu>
                                 <DropdownItem type='button' onClick={() => this.handleDropdownSelect(5)}>&nbsp;&nbsp;5 Days</DropdownItem>

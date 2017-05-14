@@ -57,6 +57,7 @@ function endlistEvents(events){
         events
     }
 }
+
 export function listEvents(searchText, loading = false, showDays) {
     return (dispatch, getState) => {
         if (!loading)
