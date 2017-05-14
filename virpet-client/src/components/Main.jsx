@@ -21,16 +21,18 @@ import SingleEvent from 'components/SingleEvent.jsx';
 import Today from 'components/Today.jsx';
 import Forecast from 'components/Forecast.jsx';
 import {setSearchText} from 'states/post-actions.js';
-import {toggleNavbar} from 'states/main-actions.js';
+import {toggleNavbar,Animated} from 'states/main-actions.js';
 import GoogleLogin from 'react-google-login';
 import './Main.css';
+
 
 class Main extends React.Component {
     static propTypes = {
         searchText: PropTypes.string,
         navbarToggle: PropTypes.bool,
         store: PropTypes.object,
-        dispatch: PropTypes.func
+        dispatch: PropTypes.func,
+        pictureNum: PropTypes.number
     };
 
     constructor(props) {
@@ -39,6 +41,8 @@ class Main extends React.Component {
         this.handleNavbarToggle = this.handleNavbarToggle.bind(this);
         this.handleSearchKeyPress = this.handleSearchKeyPress.bind(this);
         this.handleClearSearch = this.handleClearSearch.bind(this);
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
     render() {
@@ -75,7 +79,11 @@ class Main extends React.Component {
 
                     <Route exact path="/" render={() => (<Today/>)}/>
                     <Route exact path="/forecast" render={() => (<Forecast/>)}/>
-                    <img src={`images/corgi.gif`}/>
+
+
+                    <img src={`images/corgi-${8+this.props.pictureNum}.png`} onClick={this.handleClick}/>
+
+
                     <div className='footer'>
                         DataLab.
                     </div>
@@ -99,7 +107,18 @@ class Main extends React.Component {
         this.props.dispatch(setSearchText(''));
         this.searchEl.value = '';
     }
+
+    handleClick(){
+        this.interval = setInterval(()=>{this.props.dispatch(Animated())}, 60);
+    }
+
+    componentWillReceiveProps(){
+      if(this.props.pictureNum == 75 )
+        clearInterval(this.interval);
+    }
+
 }
+
 
 export default connect(state => ({
     ...state.main,
