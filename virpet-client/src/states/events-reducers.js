@@ -16,6 +16,7 @@ export function events(state = initEventState, action) {
                 startEventLoading: false
             };
         case '@EVENTS/END_LIST_EVENTS':
+
             return{
                 ...state,
                 events: action.events

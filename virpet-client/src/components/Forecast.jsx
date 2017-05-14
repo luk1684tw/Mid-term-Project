@@ -37,7 +37,7 @@ class Forecast extends React.Component {
         searchText: PropTypes.string,
         showDays: PropTypes.number,
         unaccomplishedOnly: PropTypes.bool,
-				dispatch: PropTypes.func
+		dispatch: PropTypes.func
     };
 
     constructor(props) {
@@ -45,7 +45,10 @@ class Forecast extends React.Component {
         this.toggleUnaccomplishedOnly = this.toggleUnaccomplishedOnly.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
+        this.props.dispatch(getForecast('Hsinchu', this.props.unit));
+		console.log('ENTER listEVENTS');
+		console.log(this.props.showDays);
         this.props.dispatch(listEvents(this.props.searchText, false, this.props.showDays));
     }
 

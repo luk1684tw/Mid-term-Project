@@ -62,7 +62,6 @@ export function listEvents(searchText, loading = false, showDays) {
     return (dispatch, getState) => {
         if (!loading)
             dispatch(startEventLoading());
-
         return listEventsFromApi(getState().todo.unaccomplishedOnly, searchText, showDays).then(events => {
             dispatch(endListEvents(events));
             dispatch(endEventLoading());
