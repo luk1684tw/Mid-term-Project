@@ -20,17 +20,16 @@ function listEvents(searchText = '', unaccomplishedOnly = false, days = 0) {
                     return !e.doneTs;
                 });
             }
-            if (days) {
+            if (days != 0) {
                 events.filter(e => {
                     const time = Math.round((moment(e.startDate,'YYYY-MM-DD').unix() - moment().unix())/86400);
                     if (time <= days && time >= 0) {
                         console.log('In assigned range!');
                         return true;
                     }else {
-                            console.log('Not in assigned range!');
-                            return false;
+                        console.log('Not in assigned range!');
+                        return false;
                     }
-
                 })
             }
             if (searchText) {

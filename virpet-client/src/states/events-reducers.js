@@ -14,7 +14,7 @@ export function events(state = initEventState, action) {
                 ...state,
                 startEventLoading: false
             };
-        case 'EVENTS/END_LIST_POSTS':
+        case 'EVENTS/END_LIST_EVENTS':
             return{
                 ...state,
                 events: action.events

@@ -32,7 +32,7 @@ class Forecast extends React.Component {
         todoLoading: PropTypes.bool,
         events: PropTypes.array,
         searchText: PropTypes.string,
-				showDays: PropTypes.number,
+		showDays: PropTypes.number,
         unaccomplishedOnly: PropTypes.bool
     };
 
@@ -42,10 +42,10 @@ class Forecast extends React.Component {
         this.toggleUnaccomplishedOnly = this.toggleUnaccomplishedOnly.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.dispatch(getForecast('Hsinchu', this.props.unit));
-				console.log('ENTER listEVENTS');
-				console.log(this.props.showDays);
+		console.log('ENTER listEVENTS');
+		console.log(this.props.showDays);
         this.props.dispatch(listEvents(this.props.searchText, false, this.props.showDays));
     }
 
@@ -121,8 +121,8 @@ class Forecast extends React.Component {
 
 export default connect(state => ({
     ...state.forecast,
-		...state.events,
-		...state.todoForm,
+	...state.events,
+	...state.todoForm,
     unit: state.unit,
     searchText: state.searchText
 
