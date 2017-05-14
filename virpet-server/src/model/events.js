@@ -4,7 +4,7 @@ const moment = require('moment');
 
 function listEvents( searchText = '',unaccomplishedOnly = false,days = 0) {
 	return new Promise((reject,resolve) => {
-		if (!fs.existsSync('data-events.json',)) {
+		if (!fs.existsSync('data-events.json')) {
 			fs.writeFileSync('data-events.json','');
 		}
 
@@ -79,3 +79,4 @@ function accomplishEvent(id) {
             });
 		});
 	});
+}

@@ -18,5 +18,14 @@ router.get('/events',function(req,res,next) {
 //create
 
 router.post('/events',function(req,res,next) {
-	
-})
+	const {eventTitle,eventStartDate,eventEndDate,eventDescript} = req.body;
+	if (!eventTitle || ! eventStartDate || !eventEndDate || !eventDescript) {
+		const err = new Error('Date incomplete');
+		err.status = 400;
+		throw err;
+	}
+
+	eventModel.createEvent(eventTitle,eventStartDate,eventEndDate,eventDescript).then(event => {
+		res.json(event);
+	}).catch(next);
+});
