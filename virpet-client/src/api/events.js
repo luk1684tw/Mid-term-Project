@@ -21,7 +21,8 @@ export function listEvents(unaccomplishedOnly, searchText, showDays) {
     return axios.get(url).then(function(res) {
      if (res.status !== 200)
         throw new Error(`Unexpected response code: ${res.status}`);
-
+        console.log('ListEvent in api received :');
+        console.log(res.data);
         return res.data;
     });
 }
@@ -29,17 +30,18 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
     let url = `${eventBaseUrl}/events`;
 
     // console.log(`Making POST request to: ${url}`);
-    console.log('API.eventTitle = ' + eventTitle);
-    console.log('API.eventStartDate = ' + eventStartDate);
-    console.log('API.eventEndDate = '+ eventEndDate);
-    console.log('API.eventDescript = '+ eventDescript);
+    // console.log('API.eventTitle = ' + eventTitle);
+    // console.log('API.eventStartDate = ' + eventStartDate);
+    // console.log('API.eventEndDate = '+ eventEndDate);
+    // console.log('API.eventDescript = '+ eventDescript);
     return axios.post(url, {
         eventTitle,
         eventStartDate,
         eventEndDate,
         eventDescript
     }).then(function(res) {
-        console.log('client receive:',res.data);
+        console.log('client recieved:');
+        console.log(res.data);
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
 

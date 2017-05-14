@@ -17,7 +17,6 @@ function listTodos(unaccomplishedOnly = false,searchText = '') {
 		            return !t.doneTs;
 		        });
 		    }
-			console.log(typeof searchText);
 		    if (todos.length > 0 && searchText) {
 		        todos = todos.filter(t => {
 		            return t.text.toLowerCase().indexOf(searchText.toLowerCase()) !== -1;

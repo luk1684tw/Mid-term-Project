@@ -71,6 +71,7 @@ export function listEvents(searchText, loading = false, showDays) {
         });
     };
 };
+
 export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescript) {
     console.log('Action.eventTitle' + eventTitle);
     console.log('Action.eventDescript' + eventDescript);
@@ -78,6 +79,7 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
         dispatch(startEventLoading());
 
         return createEventFromApi(eventTitle, eventStartDate, eventEndDate, eventDescript).then(events => {
+            console.log('in createEventFromApi.then');
             dispatch(listEvents(getState().searchText, true, 7));
         }).catch(err => {
             console.error('Error creating post', err);
