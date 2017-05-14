@@ -1,14 +1,16 @@
 import axios from 'axios';
 
 // Develop server URL
-const postBaseUrl = 'http://localhost:8080/api';
-
+const eventBaseUrl = 'http://localhost:8080/api';
 
 export function listEvents(unaccomplishedOnly, searchText, showDays) {
-  let url = `${postBaseUrl}/posts`;
+  let url = `${eventBaseUrl}/events`;
   if (searchText)
-      url += `?searchText=${searchText}`;
-
+    url += `?searchText=${searchText}`;
+  if (accomplishTodo)
+    url += `?accomplishTodo=${accomplishTodo}`;
+  if (accomplishTodo && searchText)
+    url = `${eventBaseUrl}/events?accomplishTodo=${accomplishTodo}&searchText=${searchText}&showDays=${showDays}`;
   console.log('API.listEvents.unaccomplishedOnly = ' + unaccomplishedOnly);
   console.log('API.listEvents.searchText = ' + searchText);
   console.log('API.listEvents.showDays = ' + showDays);
@@ -20,7 +22,7 @@ export function listEvents(unaccomplishedOnly, searchText, showDays) {
   });
 }
 export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescript) {
-    let url = `${postBaseUrl}/posts`;
+    let url = `${eventBaseUrl}/events`;
 
     // console.log(`Making POST request to: ${url}`);
     console.log('API.eventTitle = ' + eventTitle);
