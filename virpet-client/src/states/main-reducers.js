@@ -1,12 +1,17 @@
 import moment from 'moment';
 const initMainState = {
-    navbarToggle: false
+    navbarToggle: false,
+    pictureNum: 0
 };
 export function main(state = initMainState, action) {
     switch (action.type) {
         case '@MAIN/TOGGLE_NAVBAR':
             return {
                 navbarToggle: !state.navbarToggle
+            };
+       case '@MAIN/Animated':
+            return {
+                pictureNum: (state.pictureNum<75) ?　state.pictureNum+1 : 0
             };
         default:
             return state;
