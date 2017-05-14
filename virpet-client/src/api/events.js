@@ -4,14 +4,15 @@ import axios from 'axios';
 const eventBaseUrl = 'http://localhost:8080/api';
 
 export function listEvents(unaccomplishedOnly, searchText, showDays) {
+
     let url = `${eventBaseUrl}/events`;
     if (searchText)
         url += `?searchText=${searchText}`;
-    if (accomplishTodo)
-        url += `?accomplishTodo=${accomplishTodo}`;
-    if (accomplishTodo && searchText)
-        url = `${eventBaseUrl}/events?accomplishTodo=${accomplishTodo}&searchText=${searchText}`;
-    if (!accomplishTodo && !searchText)
+    if (unaccomplishedOnly)
+        url += `?accomplishTodo=${unaccomplishedOnly}`;
+    if (unaccomplishedOnly && searchText)
+        url = `${eventBaseUrl}/events?accomplishTodo=${unaccomplishedOnly}&searchText=${searchText}`;
+    if (!unaccomplishedOnly && !searchText)
     	url += `?showDays=${showDays}`;
     else
         url += `&showDays=${showDays}`;
