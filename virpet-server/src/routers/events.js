@@ -10,6 +10,9 @@ router.use(bodyParser.json());
 //list
 router.get('/events',function(req,res,next) {
 	console.log('in event.js/router.get');
+	console.log(req.query.searchText);
+	console.log(req.query.unaccomplishedOnly);
+	console.log(req.query.days);
 	eventModel.listEvents(req.query.searchText,req.query.unaccomplishedOnly,req.query.days).then(events => {
 		res.json(events);
 	}).catch(next);
@@ -25,7 +28,6 @@ router.post('/events',function(req,res,next) {
 		err.status = 400;
 		throw err;
 	}
-	console.log('eventTitle :' ,eventTitle);
 	eventModel.createEvent(eventTitle,eventStartDate,eventEndDate,eventDescript).then(events => {
 		console.log('event created:' , events);
 		res.json(events);
