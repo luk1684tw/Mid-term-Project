@@ -75,6 +75,7 @@ class Main extends React.Component {
 
                     <Route exact path="/" render={() => (<Today/>)}/>
                     <Route exact path="/forecast" render={() => (<Forecast/>)}/>
+                    <img src={`images/corgi.gif`}/>
                     <div className='footer'>
                         DataLab.
                     </div>
