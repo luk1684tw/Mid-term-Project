@@ -51,7 +51,7 @@ class TodoForm extends React.Component {
                                 {/*<i className={getMoodIcon(mood)}></i>&nbsp;
                                      mood === 'na' ? 'Mood' : mood
                                 */}
-								{this.props.showDays} Days
+								                {this.props.showDays} Days
                             </DropdownToggle>
                             <DropdownMenu>
                                 <DropdownItem type='button' onClick={() => this.handleDropdownSelect(5)}>&nbsp;&nbsp;5 Days</DropdownItem>
