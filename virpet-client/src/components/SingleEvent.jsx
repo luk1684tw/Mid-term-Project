@@ -114,6 +114,7 @@ class SingleEvent extends React.Component{
     }
     handleEventTitleChange(e) {
         const text = e.target.value;
+		// console.log(typeof(e.target.value));
         console.log('e.target.value = ' + e.target.value);
         this.props.dispatch(eventTitle(text));
         if (text && this.props.eventDanger) {

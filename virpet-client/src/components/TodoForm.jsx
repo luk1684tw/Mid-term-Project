@@ -47,11 +47,12 @@ class TodoForm extends React.Component {
                 <Alert color='info' className={`d-flex flex-column flex-sm-row justify-content-center ${inputDanger}`}>
                     <div className='mood align-self-start'>
                         <ButtonDropdown type='buttom' isOpen={moodToggle} toggle={this.handleMoodToggle}>
-                            {/* <DropdownToggle className='mood-toggle' type='button' caret color="secondary">
-                                <i className={getMoodIcon(mood)}></i>&nbsp;{
-                                    mood === 'na' ? 'Mood' : mood
-                                }
-                            </DropdownToggle> */}
+                            <DropdownToggle className='mood-toggle' type='button' caret color="secondary">
+                                {/*<i className={getMoodIcon(mood)}></i>&nbsp;
+                                     mood === 'na' ? 'Mood' : mood
+                                */}
+								{this.props.showDays} Days
+                            </DropdownToggle>
                             <DropdownMenu>
                                 <DropdownItem type='button' onClick={() => this.handleDropdownSelect(5)}>&nbsp;&nbsp;5 Days</DropdownItem>
                                 <DropdownItem type='button' onClick={() => this.handleDropdownSelect(7)}>&nbsp;&nbsp;7 Days</DropdownItem>
