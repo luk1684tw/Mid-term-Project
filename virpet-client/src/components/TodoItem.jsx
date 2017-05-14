@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
-import {accomplishTodo} from 'states/todo-actions.js';
-import {getMoodIcon} from 'utilities/weather.js';
+import {accomplishEvent} from 'states/events-actions.js';
 
 import './TodoItem.css';
 
@@ -55,7 +54,7 @@ class TodoItem extends React.Component {
 
     handleCheckboxCheck(e) {
         if (!this.props.doneTs) {
-            this.props.dispatch(accomplishTodo(this.props.id));
+            this.props.dispatch(accomplishEvent(this.props.id));
         }
     }
 }

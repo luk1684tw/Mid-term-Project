@@ -33,4 +33,18 @@ router.post('/events',function(req,res,next) {
 		res.json(events);
 	}).catch(next);
 });
+
+router.post('/events/:id', function(req, res, next) {
+    const {id} = req.params;
+		// console.log('Router.eventjs.accomplishEvent : ', id);
+    if (!id) {
+        const err = new Error('Post ID and mood are required');
+        err.status = 400;
+        throw err;
+    }
+    eventModel.accomplishEvent(id).then(events => {
+		console.log('enter eventModel');
+        res.json(events);
+    }).catch(next);
+});
 module.exports = router;
