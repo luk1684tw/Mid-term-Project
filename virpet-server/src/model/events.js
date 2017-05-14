@@ -3,14 +3,16 @@ const uuid = require('uuid/v4');
 const moment = require('moment');
 
 function listEvents(searchText = '', unaccomplishedOnly = false, days = 0) {
-    return new Promise((reject, resolve) => {
+    return new Promise((resolve, reject) => {
         if (!fs.existsSync('data-events.json')) {
             fs.writeFileSync('data-events.json', '');
         }
 
         fs.readFile('data-events.json', 'utf8', (err, data) => {
-            if (err)
+            if (err){
+                console.log('readFile failed');
                 reject(err);
+            }
 
             let events = data ? JSON.parse(data) : [];
             if (unaccomplishedOnly) {
@@ -35,29 +37,32 @@ function listEvents(searchText = '', unaccomplishedOnly = false, days = 0) {
 }
 
 function createEvent(title, startDate, endDate, description) {
-    return new Promise((reject, resolve) => {
+    return new Promise((resolve, reject) => {
         const newEvent = {
             id: uuid(),
             title: title,
             startDate: startDate,
             endDate: endDate,
             description: description,
-						ts: moment().unix(),
+			ts: moment().unix(),
             doneTs: null
         };
-
+        console.log('events :',newEvent);
         listEvents().then(events => {
+            console.log('in listEvents().then');
             events = [
                 ...events,
                 newEvent
             ];
-
             fs.writeFile('data-evens.json', JSON.stringify(events), err => {
                 if (err)
                     reject(err);
                 resolve(newEvent);
             });
-        });
+        }).catch((err) => {
+            console.log('in listEvents().catch');
+            console.error(err);
+        })
     });
 }
 
