@@ -1,6 +1,7 @@
 import {
     createEvent as createEventFromApi,
-    listEvents as listEventsFromApi
+    listEvents as listEventsFromApi,
+    accomplishEvent as accomplishEventFromApi
 } from 'api/events.js';
 
 export function eventTitle(eventTitleValue) {
@@ -51,7 +52,7 @@ function endEventLoading(){
         type: '@EVENTS/END_EVENT_LOADING'
     };
 }
-function endlistEvents(events){
+function endListEvents(events){
     return{
         type: '@EVENTS/END_LIST_EVENTS',
         events
@@ -63,15 +64,15 @@ export function listEvents(searchText, loading = false, showDays) {
             dispatch(startEventLoading());
 
         return listEventsFromApi(getState().todo.unaccomplishedOnly, searchText, showDays).then(events => {
-            dispatch(endlistEvents(events));
+            dispatch(endListEvents(events));
             dispatch(endEventLoading());
+            console.log('Events in actions.listEvents', events);
         }).catch(err => {
             console.error('Error listing posts', err);
             dispatch(endEventLoading());
         });
     };
 };
-
 export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescript) {
     console.log('Action.eventTitle' + eventTitle);
     console.log('Action.eventDescript' + eventDescript);
@@ -79,7 +80,6 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
         dispatch(startEventLoading());
 
         return createEventFromApi(eventTitle, eventStartDate, eventEndDate, eventDescript).then(events => {
-            console.log('in createEventFromApi.then');
             dispatch(listEvents(getState().searchText, true, 7));
         }).catch(err => {
             console.error('Error creating post', err);
@@ -87,6 +87,30 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
         });
     };
 };
+export function accomplishEvent(id) {
+    return (dispatch, getState) => {
+        dispatch(startEventLoading());
+
+        return accomplishEventFromApi(id).then(() => {
+            dispatch(listEvents(getState().searchText, true, 7));
+        }).catch(err => {
+            console.error('Error accomplishing todos', err);
+            dispatch(endEventLoading());
+        });
+    }
+}
+function toggleUnaccomplishedOnly() {
+    return {
+        type: '@EVENTS/TOGGLE_UNACCOMPLISHED_ONLY'
+    };
+}
+
+export function toggleAndList() {
+    return (dispatch, getState) => {
+        dispatch(toggleUnaccomplishedOnly());
+        return dispatch(listEvents(getState().searchText, true, 7));
+    }
+}
 //------------------------
 //------------------------
 export function toggleForm() {

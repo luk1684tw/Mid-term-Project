@@ -48,3 +48,15 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
         return res.data;
     });
 }
+export function accomplishEvent(id) {
+	let url = `${eventBaseUrl}/events/${id}`;
+
+    // console.log(`Making POST request to: ${url}`);
+	console.log(`In accomplishEvent : ${url}`);
+	return axios.post(url).then(function(res) {
+        if (res.status !== 200)
+            throw new Error(`Unexpected response code: ${res.status}`);
+
+        return res.data;
+    });
+}

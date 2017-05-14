@@ -1,6 +1,7 @@
 const initEventState = {
   startEventLoading: false,
-  events: []
+  events: [],
+  unaccomplishedOnly: false
 }
 export function events(state = initEventState, action) {
     switch(action.type) {
@@ -14,10 +15,15 @@ export function events(state = initEventState, action) {
                 ...state,
                 startEventLoading: false
             };
-        case 'EVENTS/END_LIST_POSTS':
+        case '@EVENTS/END_LIST_EVENTS':
             return{
                 ...state,
                 events: action.events
+            };
+        case '@EVENTS/TOGGLE_UNACCOMPLISHED_ONLY':
+            return {
+                ...state,
+                unaccomplishedOnly: !state.unaccomplishedOnly
             };
         default:
             return state;
