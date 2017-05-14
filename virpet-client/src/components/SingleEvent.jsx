@@ -29,6 +29,7 @@ class SingleEvent extends React.Component{
       eventDescriptValue: PropTypes.string,
       eventDanger: PropTypes.bool,
       events: PropTypes.array,
+      showDayss: PropTypes.number,
       startEventLoading:PropTypes.bool,
       store: PropTypes.object,
       dispatch: PropTypes.func
@@ -105,10 +106,10 @@ class SingleEvent extends React.Component{
             return;
         }
         this.props.dispatch(changeModal());
-        this.props.dispatch(createEvent(this.props.eventTitle, this.props.eventStartDate, this.props.eventEndDate, this.props.eventDescript));
+        this.props.dispatch(createEvent(this.props.eventTitleValue, this.props.eventStartDate, this.props.eventEndDate, this.props.eventDescriptValue));
         this.props.dispatch(eventTitle(''));
-        this.props.dispatch(eventStartDate(''));
-        this.props.dispatch(eventEndDate(''));
+        this.props.dispatch(eventGetStartDate(''));
+        this.props.dispatch(eventGetEndDate(''));
         this.props.dispatch(eventDescript(''));
     }
     handleEventTitleChange(e) {
@@ -147,5 +148,6 @@ class SingleEvent extends React.Component{
 }
 export default connect(state => ({
     ...state.eventForm,
-    ...state.events
+    ...state.events,
+    ...state.todoForm
 }))(SingleEvent);

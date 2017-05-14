@@ -33,10 +33,10 @@ export function setMoodToggle(toggle) {
     };
 };
 
-export function selectMood(mood) {
+export function selectShowDays(showDays) {
     return {
-        type: '@TODO_FORM/SELECT_MOOD',
-        mood
+        type: '@TODO_FORM/SELECT_SHOW_DAYS',
+        showDays
     };
 };
 
