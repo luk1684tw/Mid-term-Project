@@ -36,7 +36,6 @@ class TodoForm extends React.Component {
         return (
             <div className='post-form'>
               {formToggle?
-              <Form className={`form-inline justify-content-center`} onSubmit={this.handleEvents}>
                       <ButtonDropdown type='buttom' isOpen={tempToggle} toggle={this.handleTempToggle}>
                           <DropdownToggle className='mood-toggle' type='button' caret color="secondary">
                               {/*<i className={getMoodIcon(mood)}></i>&nbsp;
@@ -54,8 +53,6 @@ class TodoForm extends React.Component {
                               <DropdownItem type='button' onClick={() => this.handleDropdownSelect(30)}>&nbsp;&nbsp;30 Days</DropdownItem>
                           </DropdownMenu>
                       </ButtonDropdown>
-                  <Button  color="info">選取</Button>
-              </Form>
               :
               <Button className='btn-form' outline color="secondary" onClick={this.handleFormToggle}><i className='fa fa-map-marker' aria-hidden="true"></i>&nbsp;&nbsp;選取範圍</Button>
             }
@@ -79,7 +76,6 @@ class TodoForm extends React.Component {
     handleEvents() {
         const {showDays, dispatch} = this.props;
         console.log('handleEvents :' + showDays);
-        dispatch(listEvents('', true, showDays));
     }
 }
 
