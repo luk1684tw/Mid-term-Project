@@ -7,10 +7,10 @@ export function listEvents(unaccomplishedOnly, searchText, showDays) {
   let url = `${eventBaseUrl}/events`;
   if (searchText)
     url += `?searchText=${searchText}`;
-  if (accomplishTodo)
-    url += `?accomplishTodo=${accomplishTodo}`;
-  if (accomplishTodo && searchText)
-    url = `${eventBaseUrl}/events?accomplishTodo=${accomplishTodo}&searchText=${searchText}&showDays=${showDays}`;
+  if (unaccomplishedOnly)
+    url += `?accomplishTodo=${unaccomplishedOnly}`;
+  if (unaccomplishedOnly && searchText)
+    url = `${eventBaseUrl}/events?accomplishTodo=${unaccomplishedOnly}&searchText=${searchText}&showDays=${showDays}`;
   console.log('API.listEvents.unaccomplishedOnly = ' + unaccomplishedOnly);
   console.log('API.listEvents.searchText = ' + searchText);
   console.log('API.listEvents.showDays = ' + showDays);

@@ -17,7 +17,8 @@ import TodoForm from 'components/TodoForm.jsx';
 import TodoList from 'components/TodoList.jsx';
 import {cancelForecast} from 'api/open-weather-map.js';
 import {getForecast} from 'states/weather-actions.js';
-import {listTodos, toggleAndList} from 'states/todo-actions.js';
+import {toggleAndList} from 'states/todo-actions.js';
+import {listEvents}from 'states/events-actions.js';
 import Days from 'components/Days.jsx'
 import './Forecast.css';
 
@@ -29,8 +30,9 @@ class Forecast extends React.Component {
         masking: PropTypes.bool,
         unit: PropTypes.string,
         todoLoading: PropTypes.bool,
-        todos: PropTypes.array,
+        events: PropTypes.array,
         searchText: PropTypes.string,
+				showDays: PropTypes.number,
         unaccomplishedOnly: PropTypes.bool
     };
 
@@ -42,7 +44,9 @@ class Forecast extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(getForecast('Hsinchu', this.props.unit));
-        this.props.dispatch(listTodos(this.props.searchText));
+				console.log('ENTER listEVENTS');
+				console.log(this.props.showDays);
+        this.props.dispatch(listEvents(this.props.searchText, false, this.props.showDays));
     }
 
     componentWillUnmount() {
@@ -53,19 +57,17 @@ class Forecast extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.searchText !== this.props.searchText) {
-            this.props.dispatch(listTodos(nextProps.searchText));
+            this.props.dispatch(listEvents(this.props.searchText, false, this.props.showDays));
         }
     }
 
     render() {
-        const {unit, city, list, masking, todoLoading, todos} = this.props;
+        const {unit, city, list, masking, todoLoading, events} = this.props;
         const tomorrow = list[0];
         const rests = list.slice(1);
 
         document.body.className = `weather-bg`;
         document.querySelector('.weather-bg').style.backgroundImage = `url("images/corgi.jpg")  `;
-
-
         return (
             <div className='forecast'>
 			<container className='display-5'>
@@ -102,7 +104,7 @@ class Forecast extends React.Component {
                         <div><Input type="checkbox" checked={this.props.unaccomplishedOnly} onClick={this.toggleUnaccomplishedOnly} />&nbsp;<Label className='accomplished-only' onClick={this.toggleUnaccomplishedOnly}>Unaccomplished</Label></div>
                     </div>
                     <TodoForm />
-                    <TodoList todos={events} />{
+                    <TodoList events={this.props.events} />{
                         todoLoading &&
                         <Alert color='warning' className='loading'>Loading...</Alert>
                     }
@@ -118,7 +120,9 @@ class Forecast extends React.Component {
 
 export default connect(state => ({
     ...state.forecast,
+		...state.events,
+		...state.todoForm,
     unit: state.unit,
-    ...state.events,
     searchText: state.searchText
+
 }))(Forecast);

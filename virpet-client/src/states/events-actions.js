@@ -85,3 +85,21 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
         });
     };
 };
+//------------------------
+//------------------------
+export function toggleForm() {
+    return {
+        type: '@EVENTSFORM/TOGGLE_FORM'
+    };
+}
+export function toggleTemp() {
+    return {
+        type: '@EVENTSFORM/TOGGLE_TEMP'
+    };
+}
+export function selectShowDays(showDays) {
+    return {
+        type: '@EVENTSFORM/SELECT_SHOW_DAYS',
+        showDays
+    };
+};
