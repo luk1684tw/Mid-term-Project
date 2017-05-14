@@ -11,9 +11,9 @@ router.use(bodyParser.json());
 router.get('/events',function(req,res,next) {
 	console.log('in event.js/router.get');
 	console.log(req.query.searchText);
-	console.log(req.query.unaccomplishedOnly);
-	console.log(req.query.days);
-	eventModel.listEvents(req.query.searchText,req.query.unaccomplishedOnly,req.query.days).then(events => {
+	console.log(req.query.accomplishTodo);
+	console.log(req.query.showDays);
+	eventModel.listEvents(req.query.searchText,req.query.accomplishTodo,req.query.showDays).then(events => {
 		res.json(events);
 	}).catch(next);
 });

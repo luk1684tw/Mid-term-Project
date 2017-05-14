@@ -13,8 +13,8 @@ function listEvents(searchText = '', unaccomplishedOnly = false, days = 0) {
                 console.log('readFile failed');
                 reject(err);
             }
-
             let events = data ? JSON.parse(data) : [];
+
             if (unaccomplishedOnly) {
                 events.filter(e => {
                     return !e.doneTs;
@@ -22,7 +22,15 @@ function listEvents(searchText = '', unaccomplishedOnly = false, days = 0) {
             }
             if (days) {
                 events.filter(e => {
-                    return ((e.startDate - moment().unix()) <= days);
+                    const time = Math.round((moment(e.startDate,'YYYY-MM-DD').unix() - moment().unix())/86400);
+                    if (time <= days && time >= 0) {
+                        console.log('In assigned range!');
+                        return true;
+                    }else {
+                            console.log('Not in assigned range!');
+                            return false;
+                    }
+
                 })
             }
             if (searchText) {
@@ -31,7 +39,6 @@ function listEvents(searchText = '', unaccomplishedOnly = false, days = 0) {
                 })
             }
             resolve(events);
-
         });
     });
 }
@@ -50,11 +57,13 @@ function createEvent(title, startDate, endDate, description) {
         console.log('events :',newEvent);
         listEvents().then(events => {
             console.log('in listEvents().then');
+
             events = [
                 ...events,
                 newEvent
             ];
-            fs.writeFile('data-evens.json', JSON.stringify(events), err => {
+            console.log(events);
+            fs.writeFile('data-events.json', JSON.stringify(events), err => {
                 if (err)
                     reject(err);
                 resolve(newEvent);

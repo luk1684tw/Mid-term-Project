@@ -11,7 +11,7 @@ export default class Days extends React.Component{
     	super(props);
 	}
 	render(){
-		const date = new Date().getDay() + this.props.order;
+		const date = (new Date().getDay() + this.props.order)%7;
 		const weekday = (date === 0)? 'Sun' : (date === 1) ? 'Mon' : (date === 2) ? 'Tue'
 			: (date === 3) ? 'Wen' : (date === 4) ? 'Thu' : (date === 5) ? 'Fri' : 'Sat'
 	    return(
