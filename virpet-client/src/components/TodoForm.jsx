@@ -12,7 +12,7 @@ import {
 import {connect} from 'react-redux';
 
 import {getMoodIcon} from 'utilities/weather.js';
-import {createTodo, input, inputDanger, toggleMood, setMoodToggle, selectMood} from 'states/todo-actions.js';
+import {createTodo, input, inputDanger, toggleMood, setMoodToggle, selectShowDays} from 'states/todo-actions.js';
 
 import './PostForm.css';
 
@@ -21,7 +21,7 @@ class TodoForm extends React.Component {
         inputValue: PropTypes.string,
         inputDanger: PropTypes.bool,
         moodToggle: PropTypes.bool,
-        mood: PropTypes.string,
+        showDays: PropTypes.number,
         dispatch: PropTypes.func
     };
 
@@ -39,7 +39,7 @@ class TodoForm extends React.Component {
     }
 
     render() {
-        const {inputValue, moodToggle, mood} = this.props;
+        const {inputValue, moodToggle} = this.props;
         const inputDanger = this.props.inputDanger ? 'has-danger' : '';
 
         return (
@@ -47,19 +47,19 @@ class TodoForm extends React.Component {
                 <Alert color='info' className={`d-flex flex-column flex-sm-row justify-content-center ${inputDanger}`}>
                     <div className='mood align-self-start'>
                         <ButtonDropdown type='buttom' isOpen={moodToggle} toggle={this.handleMoodToggle}>
-                            <DropdownToggle className='mood-toggle' type='button' caret color="secondary">
+                            {/* <DropdownToggle className='mood-toggle' type='button' caret color="secondary">
                                 <i className={getMoodIcon(mood)}></i>&nbsp;{
                                     mood === 'na' ? 'Mood' : mood
                                 }
-                            </DropdownToggle>
+                            </DropdownToggle> */}
                             <DropdownMenu>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Clear')}>&nbsp;&nbsp;5 Days</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Clouds')}>&nbsp;&nbsp;7 Days</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Drizzle')}>&nbsp;&nbsp;10 Days</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Rain')}>&nbsp;&nbsp;15 Days</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Thunder')}>&nbsp;&nbsp;20 Days</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Snow')}>&nbsp;&nbsp;25 Days</DropdownItem>
-                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect('Windy')}>&nbsp;&nbsp;30 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect(5)}>&nbsp;&nbsp;5 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect(7)}>&nbsp;&nbsp;7 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect(10)}>&nbsp;&nbsp;10 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect(15)}>&nbsp;&nbsp;15 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect(20)}>&nbsp;&nbsp;20 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect(25)}>&nbsp;&nbsp;25 Days</DropdownItem>
+                                <DropdownItem type='button' onClick={() => this.handleDropdownSelect(30)}>&nbsp;&nbsp;30 Days</DropdownItem>
                             </DropdownMenu>
                         </ButtonDropdown>
                     </div>
@@ -70,8 +70,8 @@ class TodoForm extends React.Component {
         );
     }
 
-    handleDropdownSelect(mood) {
-        this.props.dispatch(selectMood(mood));
+    handleDropdownSelect(showDays) {
+        this.props.dispatch(selectShowDays(showDays));
     }
 
     handleInputChange(e) {
