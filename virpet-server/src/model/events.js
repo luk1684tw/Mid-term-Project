@@ -91,5 +91,5 @@ function accomplishEvent(id) {
 module.exports = {
     listEvents,
     createEvent,
-		accomplishEvent
+	accomplishEvent
 };
