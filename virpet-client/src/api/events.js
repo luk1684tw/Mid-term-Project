@@ -3,7 +3,7 @@ import axios from 'axios';
 // Develop server URL
 const postBaseUrl = 'http://localhost:8080/api';
 
-export function listEvents(searchText) {
+export function listEvents(searchText,unaccomplishedOnly,days) {
   let url = `${postBaseUrl}/posts`;
   if (searchText)
       url += `?searchText=${searchText}`;

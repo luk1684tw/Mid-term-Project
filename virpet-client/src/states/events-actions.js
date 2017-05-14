@@ -57,7 +57,7 @@ function endlistEvents(events){
         events
     }
 }
-export function listEvents(searchText, loading = false) {
+export function listEvents(searchText, unaccomplishedOnly = false, loading = false) {
     return (dispatch, getState) => {
         if (!loading)
             dispatch(startEventLoading());
@@ -76,7 +76,7 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
         dispatch(startEventLoading());
 
         return createEventFromApi(eventTitle, eventStartDate, eventEndDate, eventDescript).then(events => {
-            dispatch(listEvents(getState().searchText, true));
+            dispatch(listEvents(getState().searchText, false, true));
         }).catch(err => {
             console.error('Error creating post', err);
             dispatch(endEventLoading());
