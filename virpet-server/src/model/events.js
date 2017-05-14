@@ -2,7 +2,7 @@ const fs = require('fs');
 const uuid = require('uuid/v4');
 const moment = require('moment');
 
-function listEvents(unaccomplishedOnly = false,days = 0, searchText = '') {
+function listEvents( searchText = '',unaccomplishedOnly = false,days = 0) {
 	return new Promise((reject,resolve) => {
 		if (!fs.existsSync('data-events.json',)) {
 			fs.writeFileSync('data-events.json','');
