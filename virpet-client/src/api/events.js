@@ -4,6 +4,7 @@ import axios from 'axios';
 const eventBaseUrl = 'http://localhost:8080/api';
 
 export function listEvents(unaccomplishedOnly, searchText, showDays) {
+
     let url = `${eventBaseUrl}/events`;
     if (searchText)
         url += `?searchText=${searchText}`;

@@ -20,7 +20,7 @@ class TodoList extends React.Component {
 
     render() {
         const {events} = this.props;
-
+        console.log(events);
         let children = (
             <ListGroupItem className='empty d-flex justify-content-center align-items-center'>
                 <div className='empty-text'>All events are accomplished.<br />Anything else?</div>
