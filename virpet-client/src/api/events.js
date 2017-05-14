@@ -4,21 +4,7 @@ import axios from 'axios';
 const eventBaseUrl = 'http://localhost:8080/api';
 
 export function listEvents(unaccomplishedOnly, searchText, showDays) {
-<<<<<<< HEAD
-  let url = `${eventBaseUrl}/events`;
-  if (searchText)
-    url += `?searchText=${searchText}`;
-  if (unaccomplishedOnly)
-    url += `?accomplishTodo=${unaccomplishedOnly}`;
-  if (unaccomplishedOnly && searchText)
-    url = `${eventBaseUrl}/events?accomplishTodo=${unaccomplishedOnly}&searchText=${searchText}&showDays=${showDays}`;
-  console.log('API.listEvents.unaccomplishedOnly = ' + unaccomplishedOnly);
-  console.log('API.listEvents.searchText = ' + searchText);
-  console.log('API.listEvents.showDays = ' + showDays);
-  return axios.get(url).then(function(res) {
-      if (res.status !== 200)
-          throw new Error(`Unexpected response code: ${res.status}`);
-=======
+
     let url = `${eventBaseUrl}/events`;
     if (searchText)
         url += `?searchText=${searchText}`;
@@ -35,7 +21,6 @@ export function listEvents(unaccomplishedOnly, searchText, showDays) {
     return axios.get(url).then(function(res) {
      if (res.status !== 200)
         throw new Error(`Unexpected response code: ${res.status}`);
->>>>>>> master
 
         return res.data;
     });
