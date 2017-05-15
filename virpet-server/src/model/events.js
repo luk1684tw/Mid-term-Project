@@ -31,12 +31,12 @@ function listEvents(searchText = '', unaccomplishedOnly = false, days = 0) {
                             return false;
                     }
 
-                })
+                });
             }
             if (searchText) {
                 events.filter(e => {
-                    return e.text.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-                })
+                    return e.text.toLowerCase().indexOf(searchText.toLowerCase()) !== -1;
+                });
             }
             resolve(events);
         });
@@ -88,7 +88,7 @@ function accomplishEvent(id) {
                 return p;
             })
 
-            fs.writeFile('data-evens.json', JSON.stringify(events), err => {
+            fs.writeFile('data-events.json', JSON.stringify(events), err => {
                 if (err)
                     reject(err);
 

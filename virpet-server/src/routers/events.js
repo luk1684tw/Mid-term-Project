@@ -43,7 +43,7 @@ router.post('/events/:id', function(req, res, next) {
         throw err;
     }
     eventModel.accomplishEvent(id).then(events => {
-		console.log('enter eventModel');
+		console.log('enter eventModel: accomplishEvent');
         res.json(events);
     }).catch(next);
 });

@@ -63,7 +63,7 @@ export function listEvents(searchText, loading = false, showDays) {
         if (!loading)
             dispatch(startEventLoading());
 
-        return listEventsFromApi(getState().todo.unaccomplishedOnly, searchText, showDays).then(events => {
+        return listEventsFromApi(getState().events.unaccomplishedOnly, searchText, showDays).then(events => {
             dispatch(endListEvents(events));
             dispatch(endEventLoading());
             console.log('Events in actions.listEvents', events);
@@ -90,7 +90,7 @@ export function createEvent(eventTitle, eventStartDate, eventEndDate, eventDescr
 export function accomplishEvent(id) {
     return (dispatch, getState) => {
         dispatch(startEventLoading());
-
+        console.log('In events-action.accomplishEvent and call accomplishEventFromApiapi');
         return accomplishEventFromApi(id).then(() => {
             dispatch(listEvents(getState().searchText, true, 7));
         }).catch(err => {

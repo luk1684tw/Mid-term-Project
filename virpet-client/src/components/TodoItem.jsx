@@ -52,7 +52,8 @@ class TodoItem extends React.Component {
         );
     }
 
-    handleCheckboxCheck(e) {
+    handleCheckboxCheck() {
+        console.log('In handleCheckboxCheck', this.props.id);
         if (!this.props.doneTs) {
             this.props.dispatch(accomplishEvent(this.props.id));
         }
