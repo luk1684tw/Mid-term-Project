@@ -30,6 +30,7 @@ export default class PostList extends React.Component {
         if (posts.length) {
             children = posts.map(p => (
                 <ListGroupItem key={p.id} action>
+                    
                     <PostItem {...p} />
                 </ListGroupItem>
             ));

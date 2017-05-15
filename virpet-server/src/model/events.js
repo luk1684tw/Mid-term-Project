@@ -88,7 +88,7 @@ function accomplishEvent(id) {
                 return p;
             })
 
-            fs.writeFile('data-evens.json', JSON.stringify(events), err => {
+            fs.writeFile('data-events.json', JSON.stringify(events), err => {
                 if (err)
                     reject(err);
 
